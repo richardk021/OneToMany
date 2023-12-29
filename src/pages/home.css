@@ -1,15 +1,18 @@
 /* pages/HomePage.css */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 .homePage {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    max-height: calc(100vh - 60px);
+    height: 90vh;
+    overflow:hidden;
   }
   
   h1 {
-    color: #ffffff;
+    color: #E1E1E6;
   }
   
   .transactionSection {
@@ -18,7 +21,7 @@
   }
   
   h2 {
-    color: #6d5dff;
+    color: #E1E1E6;
   }
   
   input {
@@ -41,20 +44,66 @@
     margin-top: 5px;
   }
   
-  .transactions {
+  ul.history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* height: 100px; Set the fixed height as needed */
+    width: 400px; /* Set the fixed width as needed */
+    overflow-y: auto; /* Enable vertical overflow scrolling */
+    margin-bottom: 20px;
+    /* border: 1px solid #6d5dff; */
+  }
+
+  .history-content{
+    font-family: 'Poppins';
+    color: #E1E1E6;
+    border: 1px solid #6d5dff;
+    border-radius: 22px;
+    display: grid;
+    height: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+    align-items: center;
+  }
+
+  .content-name{
+    grid-area: 1 / 1 / 2 / 2;
+    text-align: left;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+    align-items: baseline;
+    height: 12px;
+  }
+
+  .content-date{
+    grid-area: 2 / 1 / 3 / 2;
+    text-align: left;
+    padding-left: 2rem;
+    font-size: 0.75rem;
+    padding-bottom: 5px;
+  }
+
+  .content-amount{
+    grid-area: 1 / 2 / 3 / 3;
+    text-align: right;
+    padding-right: 2rem;
+  }
+
+  .transactions-name {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  
-  ul.history {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100px; /* Set the fixed height as needed */
-    width: 200px; /* Set the fixed width as needed */
-    overflow-y: auto; /* Enable vertical overflow scrolling */
-    margin-bottom: 20px;
-    border: 1px solid #6d5dff; /* Add border with color #6d5dff */
+
+  .transactions-amount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
