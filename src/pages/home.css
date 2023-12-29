@@ -1,0 +1,60 @@
+/* pages/HomePage.css */
+
+.homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-height: calc(100vh - 60px);
+  }
+  
+  h1 {
+    color: #ffffff;
+  }
+  
+  .transactionSection {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #6d5dff;
+  }
+  
+  input {
+    margin-bottom: 5px; /* Move input below the button */
+    padding: 5px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-top: 5px;
+  }
+  
+  .transactions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul.history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100px; /* Set the fixed height as needed */
+    width: 200px; /* Set the fixed width as needed */
+    overflow-y: auto; /* Enable vertical overflow scrolling */
+    margin-bottom: 20px;
+    border: 1px solid #6d5dff; /* Add border with color #6d5dff */
+  }
