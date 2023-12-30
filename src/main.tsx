@@ -10,7 +10,7 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./state/store.ts";
+import { store } from "./state/store.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
