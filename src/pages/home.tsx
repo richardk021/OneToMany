@@ -11,7 +11,7 @@ const formatter1 = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'l
 const formattedDate1: string = formatter1.format(currentDate);
 
 const HomePage: React.FC = () => {
-  const [balance, setBalance] = useState<number>(1000);
+  const [balance, setBalance] = useState<number>(0);
   const [transactionName, setTransactionName] = useState<string>('');
   const [transactionAmount, setTransactionAmount] = useState<string>('');
   const [transactionDate] = useState<string>(formattedDate1);
