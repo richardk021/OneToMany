@@ -1,14 +1,8 @@
-<<<<<<< Updated upstream
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-=======
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import Login from "./Login.tsx";
+import Login from "./pages/Login.tsx";
 // import reportWebVitals from "./reportWebVitals";
 import {
   BrowserRouter,
@@ -17,7 +11,6 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./state/store.ts";
->>>>>>> Stashed changes
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -31,14 +24,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-<<<<<<< Updated upstream
-    <App />
-  </React.StrictMode>,
-)
-=======
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
->>>>>>> Stashed changes

@@ -1,23 +1,12 @@
-<<<<<<< Updated upstream
-import React from 'react';
-=======
 import React, {} from 'react';
 import { useNavigate, Route, Routes, Link } from "react-router-dom";
 import {configureStore} from '@reduxjs/toolkit';
->>>>>>> Stashed changes
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './App.css';
+import HomePage from './pages/home';
 
 const App: React.FC = () => {
-<<<<<<< Updated upstream
-  return (
-    <div>
-      <Navbar />
-      testing
-      <Footer />
-    </div>
-=======
   // const navigate = useNavigate();
 
   return (
@@ -27,7 +16,6 @@ const App: React.FC = () => {
         <Footer />
       </div>
 
->>>>>>> Stashed changes
   );
 }
 
