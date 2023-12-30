@@ -10,12 +10,19 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Provider } from "react-redux";
+<<<<<<< Updated upstream
 import { store } from "./state/store.ts";
+=======
+import { store } from "./state/store.tsx";
+import ProgressPage from "./pages/Progress.tsx";
+import Progress from "./pages/Progress.tsx";
+>>>>>>> Stashed changes
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
   { path: "/login", element: <Login /> },
   { path: "/home", element: <App /> },
+  { path: "/progress", element: <Progress /> },
 ]);
 
 const root = ReactDOM.createRoot(
