@@ -10,13 +10,8 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-<<<<<<< Updated upstream
-import { store } from "./state/store.ts";
-=======
 import { store } from "./state/store.tsx";
-import ProgressPage from "./pages/Progress.tsx";
-import Progress from "./pages/Progress.tsx";
->>>>>>> Stashed changes
+import Progress from "./pages/progress.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
