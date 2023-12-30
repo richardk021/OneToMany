@@ -1,27 +1,23 @@
 import React, {} from 'react';
 import { useNavigate, Route, Routes, Link } from "react-router-dom";
+import {configureStore} from '@reduxjs/toolkit';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/home';
 import Login from './Login';
 import './App.css';
+import HomePage from './pages/home';
 
 const App: React.FC = () => {
-  const navigate = useNavigate();
-  navigate("/login");
-  console.log('done')
+  // const navigate = useNavigate();
 
   return (
-    <Routes>
-      <Route path="/" element={
       <div>
         <Navbar />
-        <HomePage />
+        <HomePage/>
         <Footer />
-      </div>} />
+      </div>
 
-      <Route path="login" element={<Login />} />
-    </Routes>
   );
 }
 

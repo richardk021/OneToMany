@@ -3,15 +3,19 @@
 import React, { useState } from 'react';
 import BalanceTracker from './BalanceTracker';
 import './home.css';
+import { useNavigate, Route, Routes, Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../state/store';
+import { incrementByAmount } from '../state/Balance/balanceSlice';
 
 const currentDate: Date = new Date();
-
-const formatter1 = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
+const formatter1 = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long' , day: 'numeric' });
 const formattedDate1: string = formatter1.format(currentDate);
 
-const HomePage: React.FC = () => {
-  const [balance, setBalance] = useState<number>(0);
+const HomePage = () => {
+  const balance = useSelector((state: RootState) => state.balance.value);
+  let prevBalance: number;
+  const dispatch = useDispatch();
   const [transactionName, setTransactionName] = useState<string>('');
   const [transactionAmount, setTransactionAmount] = useState<string>('');
   const [transactionDate] = useState<string>(formattedDate1);
@@ -29,8 +33,10 @@ const HomePage: React.FC = () => {
 
     if (!isNaN(amount)) {
       const isPositive = amount > 0;
+      prevBalance = balance;
 
-      setBalance((prevBalance) => prevBalance + amount);
+      dispatch(incrementByAmount(amount));
+
       setTransactionHistory((prevHistory) => [
         { amount: `${isPositive ? '+' : '-'}$${Math.abs(amount)}`, isPositive, name, date },
         ...prevHistory,
@@ -67,7 +73,6 @@ const HomePage: React.FC = () => {
         <ul className='history'>
           {transactionHistory.map((transaction, index) => (
             <li className='history-content' key={index}>
-  {/* style={{ color: transaction.isPositive ? 'green' : 'red' }} */}
               <div className='content-name'>
                 {transaction.name}
               </div>

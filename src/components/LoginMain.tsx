@@ -2,19 +2,22 @@
 
 import React, { useState } from 'react';
 import './LoginMain.css';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../state/store';
+import { setBalance } from '../state/Balance/balanceSlice';
+
 
 const LoginMain: React.FC = () => {
-  const [balance, setBalance] = useState<number>(0);
+  // const balance = useSelector((state: RootState) => state.balance.value);;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  let tempBal= 0;
 
   const handleSetBal = () => {  
-    if (!isNaN(balance)) {
-      const isPositive = balance > 0;
-
-      if(isPositive == true) {
-        navigate("/")
-      }
+    if (!isNaN(tempBal)) {
+      dispatch(setBalance(tempBal));
+      navigate('/home');
     }
   };
 
@@ -25,8 +28,7 @@ const LoginMain: React.FC = () => {
           <input
             type="number"
             placeholder="Enter amount"
-            value={balance}
-            onChange={(e) => setBalance(e.target.valueAsNumber)}
+            onChange={(e) => tempBal = e.target.valueAsNumber}
           />
           <button onClick={handleSetBal}>Set Balance</button>
       </div>
