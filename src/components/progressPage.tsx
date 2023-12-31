@@ -8,8 +8,8 @@ interface HistoryEntry {
 }
 
 const ProgressPage: React.FC = () => {
-  // Remove the unused state updater functions
-  const [savingsObjective] = useState<number>(5000);
+  const [savingsObjective, setSavingsObjective] = useState<string>('');
+  const [savingsAmount, setSavingsAmount] = useState<number | undefined>(undefined);
   const [spendingData] = useState<number[]>([1000, 2000, 1500, 2500, 1800, 2000, 1700, 2200, 1900, 2300, 2000, 2500]);
   const [earningData] = useState<number[]>([2000, 2500, 1800, 2200, 2800, 2600, 2800, 2300, 2700, 2400, 3000, 2800]);
   const [historyData] = useState<HistoryEntry[]>([
@@ -27,21 +27,49 @@ const ProgressPage: React.FC = () => {
     { month: 'December', spending: 2500, earning: 2800 },
   ]);
 
+  const handleSetSavings = () => {
+    // Perform any validation if needed
+    // For simplicity, we assume the input is valid
+    // You may want to add more complex validation logic
+    setSavingsObjective('Vacation Fund'); // Example name
+    setSavingsAmount(2000); // Example amount
+  };
+
+  const calculateProgressBar = () => {
+    if (savingsAmount === undefined || savingsAmount <= 0) {
+      return 0;
+    }
+    return (savingsAmount / 5000) * 100; // Assuming a maximum savings objective of $5000
+  };
+
   return (
     <div className="progressPage">
       <h1>Progress Page</h1>
       <div className="savingsObjective">
         <h2>Savings Objective</h2>
-        <p>${savingsObjective}</p>
+        <input
+          type="text"
+          placeholder="Enter objective name"
+          value={savingsObjective}
+          onChange={(e) => setSavingsObjective(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Enter savings amount"
+          value={savingsAmount === undefined ? '' : savingsAmount}
+          onChange={(e) => setSavingsAmount(Number(e.target.value))}
+        />
+        <div className="progressBarContainer">
+          <div className="progressBar" style={{ width: `${calculateProgressBar()}%` }}></div>
+        </div>
+        <p>Amount: ${savingsAmount}</p>
+        <button onClick={handleSetSavings}>Set Savings</button>
       </div>
       <div className="lineGraphContainer">
-        <h2>Monthly Spendings and Earnings</h2>
-        <div className="lineGraph">
-          {/* Implement your line graph component here */}
-          {/* For simplicity, let's just display the data as text */}
-          <div className="spendingData">Spendings: {spendingData.join(', ')}</div>
-          <div className="earningData">Earnings: {earningData.join(', ')}</div>
-        </div>
+        {/* Implement your line graph component here */}
+        {/* For simplicity, let's just display the data as text */}
+        <div className="spendingData">Spendings: {spendingData.join(', ')}</div>
+        <div className="earningData">Earnings: {earningData.join(', ')}</div>
       </div>
       <div className="historyList">
         <h2>Previous Month History</h2>
