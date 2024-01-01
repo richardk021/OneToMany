@@ -1,0 +1,22 @@
+.objectiveContainer{
+  width: 40vh;
+  align-content: center;
+  border: 1px solid #2F2B72;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  align-items: center;
+}
+
+.objective-name{
+  grid-area: 1 / 1 / 2 / 2;
+  text-align: center;
+}
+
+.objective-value{
+  grid-area: 2 / 1 / 3 / 2;
+  text-align: center;
+}

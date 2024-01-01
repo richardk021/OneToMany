@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './progress.css';
+import './progressPage.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../state/store';
 
 interface HistoryEntry {
   month: string;
@@ -8,8 +10,8 @@ interface HistoryEntry {
 }
 
 const ProgressPage: React.FC = () => {
-  const [savingsObjective, setSavingsObjective] = useState<string>('');
-  const [savingsAmount, setSavingsAmount] = useState<number | undefined>(undefined);
+  const objectiveName = useSelector((state: RootState) => state.savings.name);
+  const objectiveValue = useSelector((state: RootState) => state.savings.value);
   const [spendingData] = useState<number[]>([1000, 2000, 1500, 2500, 1800, 2000, 1700, 2200, 1900, 2300, 2000, 2500]);
   const [earningData] = useState<number[]>([2000, 2500, 1800, 2200, 2800, 2600, 2800, 2300, 2700, 2400, 3000, 2800]);
   const [historyData] = useState<HistoryEntry[]>([
@@ -27,44 +29,21 @@ const ProgressPage: React.FC = () => {
     { month: 'December', spending: 2500, earning: 2800 },
   ]);
 
-  const handleSetSavings = () => {
-    // Perform any validation if needed
-    // For simplicity, we assume the input is valid
-    // You may want to add more complex validation logic
-    setSavingsObjective('Vacation Fund'); // Example name
-    setSavingsAmount(2000); // Example amount
-  };
-
-  const calculateProgressBar = () => {
-    if (savingsAmount === undefined || savingsAmount <= 0) {
-      return 0;
-    }
-    return (savingsAmount / 5000) * 100; // Assuming a maximum savings objective of $5000
-  };
 
   return (
     <div className="progressPage">
-      <h1>Progress Page</h1>
-      <div className="savingsObjective">
-        <h2>Savings Objective</h2>
-        <input
-          type="text"
-          placeholder="Enter objective name"
-          value={savingsObjective}
-          onChange={(e) => setSavingsObjective(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Enter savings amount"
-          value={savingsAmount === undefined ? '' : savingsAmount}
-          onChange={(e) => setSavingsAmount(Number(e.target.value))}
-        />
-        <div className="progressBarContainer">
-          <div className="progressBar" style={{ width: `${calculateProgressBar()}%` }}></div>
+      <h1>Your Progress</h1>
+      <div className='objectiveContainer'>
+        <div className='objective-name'>
+          {objectiveName}
         </div>
-        <p>Amount: ${savingsAmount}</p>
-        <button onClick={handleSetSavings}>Set Savings</button>
+        <div className='objective-value'>
+          ${objectiveValue}
+        </div>
       </div>
+
+      {/* masih placeholder gw gatau mo bikin gimana */}
+
       <div className="lineGraphContainer">
         {/* Implement your line graph component here */}
         {/* For simplicity, let's just display the data as text */}
