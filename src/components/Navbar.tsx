@@ -1,16 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../state/store';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const objectiveName = useSelector((state: RootState) => state.savings.name);
+  const objectiveValue = useSelector((state: RootState) => state.savings.value);
 
   const goToHome = () => {
     navigate('/home');
   };
 
   const goToProgress = () => {
-    navigate('/progress');
+    if(objectiveName === '' && objectiveValue === 0) {
+      navigate('/progressinit');
+    } 
+    else {
+      navigate('/progress');
+    }
   };
 
   return (

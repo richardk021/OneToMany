@@ -12,11 +12,12 @@ import {
 import { Provider } from "react-redux";
 import { store } from "./state/store.tsx";
 import Progress from "./pages/progress.tsx";
+import ProgressInit from "./pages/progressLogin.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
-  { path: "/login", element: <Login /> },
   { path: "/home", element: <App /> },
+  { path: "/progressinit", element: <ProgressInit /> },
   { path: "/progress", element: <Progress /> },
 ]);
 
